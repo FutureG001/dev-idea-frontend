@@ -72,12 +72,11 @@ spinBtn.addEventListener('click', async () => {
 
 async function fetchProject(level, mode) {
   try {
-    // Updated endpoint to live Render Web Service
     const response = await fetch(`https://dev-idea-generator.onrender.com/api/projects/spin?level=${level}&mode=${mode}`);
     const result = await response.json();
 
     if (!result.success) {
-      alert('Error fetching project: ' + (result.message || result.error));
+      alert('Error fetching project: ' + (result.message || result.error || 'No project available for this combination.'));
       return;
     }
 
