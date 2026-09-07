@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DevIdea Generator</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #0f172a; color: #f8fafc; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 2rem; }
+    h1 { margin-bottom: 0.5rem; color: #38bdf8; }
+    p.subtitle { margin-bottom: 2rem; color: #94a3b8; }
+    
+    .controls { display: flex; gap: 1rem; margin-bottom: 2rem; background: #1e293b; padding: 1rem; border-radius: 8px; }
+    select, button { padding: 0.75rem 1rem; border-radius: 6px; border: none; font-size: 1rem; }
+    select { background: #334155; color: white; cursor: pointer; }
+    button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    button:hover { background: #0369a1; }
+
+    .wheel-container { position: relative; width: 320px; height: 320px; margin-bottom: 2rem; }
+    canvas { width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 0 20px rgba(56, 189, 248, 0.3); }
+    .pointer { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 25px solid #ef4444; z-index: 10; }
+
+    .card { background: #1e293b; padding: 1.5rem; border-radius: 8px; width: 100%; max-width: 600px; display: none; }
+    .card h2 { color: #38bdf8; margin-bottom: 0.5rem; }
+    .card h4 { color: #cbd5e1; margin-top: 1rem; margin-bottom: 0.25rem; }
+    .tag { display: inline-block; background: #334155; color: #38bdf8; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem; margin-right: 0.5rem; margin-top: 0.25rem; }
+  </style>
+</head>
+<body>
+
+  <h1>⚡ DevIdea Generator</h1>
+  <p class="subtitle">Spin to defeat developer block and find your next project</p>
+
+  <div class="controls">
+    <select id="levelSelect">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate" selected>Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+
+    <select id="modeSelect">
+      <option value="curated">Database Ideas</option>
+      <option value="novel">Gemini AI Idea</option>
+    </select>
+
+    <button id="spinBtn">Spin Wheel</button>
+  </div>
+
+  <div class="wheel-container">
+    <div class="pointer"></div>
+    <canvas id="wheelCanvas" width="320" height="320"></canvas>
+  </div>
+
+  <div id="resultCard" class="card">
+    <h2 id="projectTitle">Project Title</h2>
+    <p id="projectProblem" style="color: #94a3b8;"></p>
+
+    <h4>Recommended Tech Stack</h4>
+    <div id="techStack"></div>
+
+    <h4>Core Features</h4>
+    <ul id="coreFeatures" style="margin-left: 1.25rem; color: #cbd5e1; margin-top: 0.5rem;"></ul>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
