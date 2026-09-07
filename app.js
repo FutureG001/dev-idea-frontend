@@ -72,7 +72,8 @@ spinBtn.addEventListener('click', async () => {
 
 async function fetchProject(level, mode) {
   try {
-    const response = await fetch(`http://localhost:5000/api/projects/spin?level=${level}&mode=${mode}`);
+    // Updated endpoint to live Render Web Service
+    const response = await fetch(`https://dev-idea-generator.onrender.com/api/projects/spin?level=${level}&mode=${mode}`);
     const result = await response.json();
 
     if (!result.success) {
